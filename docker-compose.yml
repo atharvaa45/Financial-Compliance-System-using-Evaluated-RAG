@@ -1,0 +1,39 @@
+services:
+  # 1. Storage Layer (MinIO)
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"  # API port for Spark
+      - "9001:9001"  # Console port for web UI
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+    volumes:
+      - ./data/minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - data-network
+
+  # 2. Development Interface (Jupyter Lab)
+  spark-jupyter:
+    build: ./docker/spark
+    container_name: spark-jupyter
+    user: root 
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+    environment:
+      - SPARK_LOCAL_IP=0.0.0.0
+    volumes:
+      - ./notebooks:/opt/spark/notebooks
+      - ./src:/opt/spark/src
+    command: jupyter-lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/opt/spark/notebooks
+    networks:
+      - data-network
+    depends_on:
+      - minio   
+
+networks:
+  data-network:
+    driver: bridge

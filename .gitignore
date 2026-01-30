@@ -1,0 +1,58 @@
+# ===========================
+# 1. PYTHON & ENVIRONMENT
+# ===========================
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+.venv
+
+# ===========================
+# 2. DATA & STORAGE (CRITICAL)
+# ===========================
+# Ignore the entire MinIO persistence layer (Binary files, buckets, configs)
+data/
+
+# Ignore local raw downloads at the root
+sec-edgar-filings-raw/
+
+# Ignore any loose data files generated during testing
+*.parquet
+*.csv
+*.json
+*.html
+*.txt
+
+# ===========================
+# 3. SPARK & JUPYTER
+# ===========================
+# Checkpoints created by Jupyter automatically
+.ipynb_checkpoints/
+
+# Spark local metadata (generated when running Spark locally)
+metastore_db/
+derby.log
+spark-warehouse/
+
+# ===========================
+# 4. OS & EDITOR FILES
+# ===========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+
+# Docker
+*.log
