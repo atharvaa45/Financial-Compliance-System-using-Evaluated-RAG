@@ -55,6 +55,6 @@ Apache Spark:
 
 **2. Setup Infrastructure**
 ```bash
-git clone [https://github.com/aniketsingh15/compliance-llm-pipeline.git](https://github.com/aniketsingh15/compliance-llm-pipeline.git)
+git clone [https://github.com/atharvaa45/Financial-Compliance-System-using-Evaluated-RAG.git](https://github.com/atharvaa45/Financial-Compliance-System-using-Evaluated-RAG.git)
 cd compliance-llm-pipeline
 docker-compose up -d
